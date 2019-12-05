@@ -38,7 +38,8 @@ int main(int ac, char** av)
 
     if (find_filename(ac, av, filename))
 	{
-		std::cout << "Writing in file " << filename << "..." << std::endl;
+		std::cout << std::endl << "Writing in file "
+					<< filename << "..." << std::endl;
     	std::ofstream file(filename);
     	file << str << std::endl;
     	file.close();
