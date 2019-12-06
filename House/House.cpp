@@ -143,7 +143,7 @@ House::create_floor(int first_nb, int apf)
     res << APARTMENT_PREFIX << first_nb;
     for (int nb = first_nb + 1; nb < end_nb; nb++)
     {
-       res << " " << nb;
+       res << ", " << nb;
     }
 
     return (res.str());
