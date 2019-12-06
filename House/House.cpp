@@ -32,6 +32,7 @@ namespace
 
 House::House(int ac, char** av):
 _porchs(1),
+_first_porch(1),
 _s_floors(1),
 _first_nb(1),
 _s_apf(1),
@@ -56,6 +57,7 @@ _porchs_data(0)
 
 House::House():
 _porchs(1),
+_first_porch(1),
 _s_floors(1),
 _first_nb(1),
 _s_apf(1),
@@ -78,6 +80,9 @@ House::read_data()
     std::cout << PORCHS;
     std::cin >> _porchs;
 
+    std::cout << START_PORCH_NB;
+    std::cin >> _first_porch;
+
     std::cout << FLOORS;
     std::cin >> _s_floors;
 
@@ -95,14 +100,16 @@ House::to_string()
 {
     std::stringstream   res;
     int                 actual_nb = _first_nb;
+    const int 			end_porch = _first_porch + _porchs;
 
-    for (int porch = 0; porch < _porchs; porch++)
+    for (int porch = _first_porch; porch < end_porch; porch++)
     {
-        res << WORD_PORCH << ": " << porch + 1 << "\n";
-        res << create_porch(actual_nb, _porchs_data[porch]);
-        if (porch < _porchs - 1)
+        res << WORD_PORCH << ": " << porch << "\n";
+        res << create_porch(actual_nb, _porchs_data[porch - _first_porch]);
+        if (porch < end_porch - 1)
 			res << "\n\n";
-        actual_nb += (_porchs_data[porch].floors * _porchs_data[porch].apf);
+        actual_nb += (_porchs_data[porch - _first_porch].floors
+        		* _porchs_data[porch - _first_porch].apf);
     }
 
     return (res.str());

@@ -1,10 +1,12 @@
 #ifndef HOUSE_GENERATOR_HOUSE_HPP
 #define HOUSE_GENERATOR_HOUSE_HPP
 
-#define PORCHS              "Number of porches:   "
-#define FLOORS              "Number of floors:    "
-#define FIRST_NB            "First number:        "
-#define APF             	"Apartment per floor: "
+#define PORCHS              "Number of porches:    "
+#define START_PORCH_NB		"Start porch number:   "
+#define FLOORS              "Number of floors:     "
+#define FIRST_NB            "First number:         "
+#define APF             	"Apartments per floor: "
+
 
 #define WORD_PORCH          "Подъезд"
 #define WORD_FLOOR          "Этаж"
@@ -40,6 +42,7 @@ private:
     };
 
     int                 _porchs;
+    int					_first_porch;
     int                 _s_floors;
     int                 _first_nb;
     int                 _s_apf;
