@@ -77,11 +77,11 @@ _porchs_data(0)
 void
 House::read_data()
 {
-    std::cout << PORCHS;
-    std::cin >> _porchs;
-
     std::cout << START_PORCH_NB;
     std::cin >> _first_porch;
+
+    std::cout << PORCHS;
+    std::cin >> _porchs;
 
     std::cout << FLOORS;
     std::cin >> _s_floors;
