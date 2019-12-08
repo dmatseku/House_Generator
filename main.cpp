@@ -4,19 +4,36 @@
 #include <string>
 #include <fstream>
 
-static bool find_filename(int ac, char** av, std::string& filename)
+namespace
 {
-	std::string	expression = "(-file=)(\\w+)(.)?(\\w*)";
-	std::regex flag(expression);
-	std::cmatch info;
 
-	for (int i = 1; i < ac; i++)
-		if (std::regex_match(av[i], info, flag))
-		{
-			filename = info.str(2) + info.str(3) + info.str(4);
-			return (true);
-		}
-	return (false);
+	bool print_usage(int ac, char** av)
+	{
+		std::string flag = "-help";
+
+		for (int i = 1; i < ac; i++)
+			if (flag == av[i])
+			{
+				std::cout << "-file=*filename* - save in file\n"
+					"-floors=*count* - set number of floors for specified porch"
+			}
+
+	}
+
+	bool find_filename(int ac, char** av, std::string& filename)
+	{
+		std::string	expression = "(-file=)(\\w+)(.)?(\\w*)";
+		std::regex flag(expression);
+		std::cmatch info;
+	
+		for (int i = 1; i < ac; i++)
+			if (std::regex_match(av[i], info, flag))
+			{
+				filename = info.str(2) + info.str(3) + info.str(4);
+				return (true);
+			}
+		return (false);
+	}
 }
 
 int main(int ac, char** av)
